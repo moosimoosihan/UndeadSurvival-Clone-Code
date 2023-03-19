@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public float speed;
     public Vector2 inputVec;
     public Scaner scanner;
+    public Hand[] hands;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         scanner = GetComponent<Scaner>();
+
+        // bool 값을 넣으면 비활성화 된 애들도 초기화 됨!
+        hands = GetComponentsInChildren<Hand>(true);
     }
 
     void FixedUpdate()

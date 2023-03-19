@@ -74,6 +74,12 @@ public class Weapon : MonoBehaviour
                 speed = 0.4f;
                 break;
         }
+
+        // Hand Set enum 타입을 int 로 변환 가능!
+        Hand hand = player.hands[(int)data.itemType];
+        hand.spriter.sprite = data.hand;
+        hand.gameObject.SetActive(true);
+
         // 해당 모든 ApplyGear 실행!! 꼭 답장이 필요하지 않다!
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
     }
