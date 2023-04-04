@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Vector2 inputVec;
     public Scaner scanner;
     public Hand[] hands;
+    public RuntimeAnimatorController[] animCon;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -21,6 +22,11 @@ public class Player : MonoBehaviour
 
         // bool 값을 넣으면 비활성화 된 애들도 초기화 됨!
         hands = GetComponentsInChildren<Hand>(true);
+    }
+    void OnEnable()
+    {
+        speed *= Character.Speed;
+        anim.runtimeAnimatorController = animCon[GameManager.instance.playerId];
     }
 
     void FixedUpdate()
